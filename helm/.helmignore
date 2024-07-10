@@ -24,4 +24,4 @@
 
 tmp/
 
-charts/sonarr-*/sonarr
+charts/csi-driver-smb-*/csi-driver-smb
