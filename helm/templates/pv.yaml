@@ -28,7 +28,7 @@ spec:
     driver: smb.csi.k8s.io
     # volumeHandle format: {smb-server-address}#{sub-dir-name}#{share-name}
     # make sure this value is unique for every share in the cluster
-    volumeHandle: {{ $pv.csi.smb_server_address }}/{{ $pv.csi.share_name }}#{{ $pv.csi.sub_dir_name }}#
+    volumeHandle: {{ $pv.csi.smb_server_address }}#{{ $pv.csi.share_name }}#{{ $pv.csi.sub_dir_name }}#
     volumeAttributes:
       source: //{{ $pv.csi.smb_server_address_ip }}/{{ $pv.csi.share_name }}
     nodeStageSecretRef:
