@@ -1,3 +1,25 @@
+csiDriverSmbContext:
+  name: csi-smb
+
+  secret:
+    - name: secret1
+      username: a_username_base64'd
+      password: a_password_base64'd
+
+  pv:
+    - name: pv1
+      # capacity: 100Gi
+      # accessModes: ReadWriteMany # ReadWriteOnce per default
+      # pvReclaimPolicy: Retain # Retain per default
+      csi:
+        smb_server_address: fully_qualified_server_name
+        sub_dir_name: sub_dir # subdir. used for unique csi handler
+        share_name: share_name # name of the samba share
+        smb_server_address_ip: "127.0.0.1" # server ip address
+      secret:
+        name: csi-smb-secret1-secret
+        # namespace: someNs # default to kube-system
+
 csi-driver-smb:
   image:
     baseRepo: registry.k8s.io/sig-storage
