@@ -4,9 +4,14 @@
 
 - [Welcome to csi-driver-smb](#welcome-to-csi-driver-smb)
   - [Table of content](#table-of-content)
+  - [Docker images](#docker-images)
   - [Installation process](#installation-process)
   - [Examples](#examples)
   - [Resources](#resources)
+
+## Docker images
+
+We can scroll through the `registry.k8s.io` using the following website: https://explore.ggcr.dev/?repo=registry.k8s.io%2Fsig-storage%2Fsmbplugin
 
 ## Installation process
 
