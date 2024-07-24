@@ -1,5 +1,7 @@
 # Welcome to csi-driver-smb
 
+[![App Status](https://argocd-internal.spirit-dev.net/api/badge?name=csi-driver-smb-turingpi&revision=true&showAppName=true)](https://argocd-internal.spirit-dev.net/applications/csi-driver-smb-turingpi)
+
 ## Table of content
 
 - [Welcome to csi-driver-smb](#welcome-to-csi-driver-smb)
