@@ -25,11 +25,11 @@ csi-driver-smb:
     baseRepo: registry.k8s.io/sig-storage
     smb:
       repository: registry.k8s.io/sig-storage/smbplugin
-      tag: v1.15.0
+      tag: v1.16.0
       pullPolicy: IfNotPresent
     csiProvisioner:
       repository: /csi-provisioner
-      tag: v5.0.1
+      tag: v5.0.2
       pullPolicy: IfNotPresent
     livenessProbe:
       repository: /livenessprobe
