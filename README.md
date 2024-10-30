@@ -4,12 +4,7 @@
 
 ## Table of content
 
-- [Welcome to csi-driver-smb](#welcome-to-csi-driver-smb)
-  - [Table of content](#table-of-content)
-  - [Docker images](#docker-images)
-  - [Installation process](#installation-process)
-  - [Examples](#examples)
-  - [Resources](#resources)
+[[_TOC_]]
 
 ## Docker images
 
