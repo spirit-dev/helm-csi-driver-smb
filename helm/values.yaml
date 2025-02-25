@@ -25,19 +25,23 @@ csi-driver-smb:
     baseRepo: registry.k8s.io/sig-storage
     smb:
       repository: registry.k8s.io/sig-storage/smbplugin
-      tag: v1.16.0
+      tag: v1.17.0
       pullPolicy: IfNotPresent
     csiProvisioner:
       repository: /csi-provisioner
-      tag: v5.0.2
+      tag: v5.2.0
+      pullPolicy: IfNotPresent
+    csiResizer:
+      repository: registry.k8s.io/sig-storage/csi-resizer
+      tag: v1.13.1
       pullPolicy: IfNotPresent
     livenessProbe:
       repository: /livenessprobe
-      tag: v2.13.1
+      tag: v2.15.0
       pullPolicy: IfNotPresent
     nodeDriverRegistrar:
       repository: /csi-node-driver-registrar
-      tag: v2.11.1
+      tag: v2.13.0
       pullPolicy: IfNotPresent
     csiproxy:
       repository: ghcr.io/kubernetes-sigs/sig-windows/csi-proxy
@@ -58,6 +62,7 @@ csi-driver-smb:
 
   feature:
     enableGetVolumeStats: true
+    enableInlineVolume: true
 
   controller:
     name: csi-smb-controller
@@ -73,7 +78,13 @@ csi-driver-smb:
     resources:
       csiProvisioner:
         limits:
-          memory: 300Mi
+          memory: 400Mi
+        requests:
+          cpu: 10m
+          memory: 20Mi
+      csiResizer:
+        limits:
+          memory: 400Mi
         requests:
           cpu: 10m
           memory: 20Mi
@@ -99,6 +110,9 @@ csi-driver-smb:
         operator: "Exists"
         effect: "NoSchedule"
       - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
+      - key: "CriticalAddonsOnly"
         operator: "Exists"
         effect: "NoSchedule"
 
@@ -140,7 +154,8 @@ csi-driver-smb:
           memory: 20Mi
 
   windows:
-    enabled: false # Unless you already had csi proxy installed, windows.csiproxy.enabled=true is required
+    enabled: true
+    useHostProcessContainers: true
     dsName: csi-smb-node-win # daemonset name
     kubelet: 'C:\var\lib\kubelet'
     removeSMBMappingDuringUnmount: true
@@ -163,12 +178,12 @@ csi-driver-smb:
           memory: 40Mi
       smb:
         limits:
-          memory: 200Mi
+          memory: 600Mi
         requests:
           cpu: 10m
           memory: 40Mi
     csiproxy:
-      enabled: false # required if windows.enabled is true, but may be installed manually also
+      enabled: false # required if windows.enabled is true and useHostProcessContainers is false, but may be installed manually also
       dsName: csi-proxy-win # daemonset name
       tolerations: {}
       affinity: {}
