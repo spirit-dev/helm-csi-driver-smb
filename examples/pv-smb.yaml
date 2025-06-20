@@ -27,7 +27,7 @@ spec:
     # make sure this value is unique for every share in the cluster
     volumeHandle: nas.local.lan/JB-Remote-folder##
     volumeAttributes:
-      source: //192.168.0.52/JB-Remote-folder
+      source: //<NAS_IP>/JB-Remote-folder
     nodeStageSecretRef:
       name: smbcreds
       namespace: transmission
