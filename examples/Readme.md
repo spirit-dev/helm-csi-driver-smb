@@ -8,4 +8,4 @@
 
 ## Informations
 
-Le `deployment.yaml` et `deployment2.yaml` fonctionnent avec `pv-smb.yaml`
+Files `deployment.yaml` and `deployment2.yaml` both work with `pv-smb.yaml`
