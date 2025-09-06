@@ -2,5 +2,3 @@
 out*.yaml
 
 helm/charts
-
-helm/Chart.lock
