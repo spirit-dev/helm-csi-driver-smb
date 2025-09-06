@@ -25,7 +25,7 @@ csi-driver-smb:
     baseRepo: registry.k8s.io/sig-storage
     smb:
       repository: registry.k8s.io/sig-storage/smbplugin
-      tag: v1.17.0
+      tag: v1.18.0
       pullPolicy: IfNotPresent
     csiProvisioner:
       repository: /csi-provisioner
@@ -33,7 +33,7 @@ csi-driver-smb:
       pullPolicy: IfNotPresent
     csiResizer:
       repository: registry.k8s.io/sig-storage/csi-resizer
-      tag: v1.13.1
+      tag: v1.13.2
       pullPolicy: IfNotPresent
     livenessProbe:
       repository: /livenessprobe
