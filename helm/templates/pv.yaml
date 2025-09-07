@@ -1,0 +1,37 @@
+{{ $rootName := .Values.csiDriverSmbContext.name }}
+
+{{- range $pv := .Values.csiDriverSmbContext.pv }}
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    pv.kubernetes.io/provisioned-by: smb.csi.k8s.io
+  name: {{ $rootName }}-pv-smb-{{ $pv.name }}
+spec:
+  capacity:
+    storage: {{ $pv.capacity | default "100Gi" }}
+  accessModes:
+    - {{ $pv.accessModes | default "ReadWriteOnce" }}
+  persistentVolumeReclaimPolicy: {{ $pv.pvReclaimPolicy | default "Retain" }}
+  storageClassName: smb
+  mountOptions:
+    - dir_mode=0777
+    - file_mode=0777
+    - uid=1001
+    - gid=100
+    - noperm
+    - mfsymlinks
+    - cache=strict
+    - noserverino # required to prevent data corruption
+  csi:
+    driver: smb.csi.k8s.io
+    # volumeHandle format: {smb-server-address}#{sub-dir-name}#{share-name}
+    # make sure this value is unique for every share in the cluster
+    volumeHandle: {{ $pv.csi.smb_server_address }}#{{ $pv.csi.share_name }}#{{ $pv.csi.sub_dir_name }}#
+    volumeAttributes:
+      source: //{{ $pv.csi.smb_server_address_ip }}/{{ $pv.csi.share_name }}
+    nodeStageSecretRef:
+      name: {{ $pv.secret.name }}
+      namespace: {{ $pv.secret.namespace | default "kube-system" }}
+{{- end }}
