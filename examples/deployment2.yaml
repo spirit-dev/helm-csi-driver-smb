@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: deployment-smb-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+      name: deployment-smb-2
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+        - name: deployment-smb-2
+          image: nginx
+          command:
+            - "/bin/bash"
+            - "-c"
+            #   - set -euo pipefail; while true; do echo $(date) >> /mnt/smb/outfile2; sleep 5; done
+            - set -euo pipefail; while true; do echo $(date); sleep 5; done
+          # volumeMounts:
+          #   - name: smb
+          #     mountPath: "/mnt/smb"
+          #     readOnly: false
+          volumeMounts:
+            - mountPath: /smbshare
+              name: smb-volume
+      # volumes:
+      #   - name: smb
+      #     persistentVolumeClaim:
+      #       claimName: pvc-smb
+      volumes:
+        - name: smb-volume
+          hostPath:
+            # directory location on host
+            path: /mnt/nas-plex-smb
+            type: Directory
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+    type: RollingUpdate
