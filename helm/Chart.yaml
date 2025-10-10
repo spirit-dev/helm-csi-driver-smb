@@ -1,6 +1,6 @@
 apiVersion: v2
 # renovate: datasource=github-releases depName=kubernetes-csi/csi-driver-smb
-appVersion: v1.18.0
+appVersion: v1.19.0
 description: SMB CSI Driver for Kubernetes
 name: csi-driver-smb
 # renovate: datasource=helm depName=csi-driver-smb repository=https://raw.githubusercontent.com/kubernetes-csi/csi-driver-smb/master/charts
@@ -8,5 +8,5 @@ version: v1.18.0
 dependencies:
   - name: csi-driver-smb
     repository: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-smb/master/charts
-    version: v1.18.0
+    version: 1.19.0
 type: application
