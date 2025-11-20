@@ -1,8 +1,6 @@
 # CHANGEME
 
-[![GitLab Sync](https://img.shields.io/badge/gitlab_sync-csi_driver_smb-blue?style=for-the-badge&logo=gitlab)](https://gitlab-internal.spirit-dev.net/github-mirror/helm-csi-driver-smb) <!-- markdownlint-disable MD041 -->
-[![GitHub Mirror](https://img.shields.io/badge/github_mirror-csi_driver_smb-blue?style=for-the-badge&logo=github)](https://github.com/spirit-dev/helm-csi-driver-smb)
-[![App Status](https://argocd-internal.spirit-dev.net/api/badge?name=csi-driver-smb-turingpi&revision=true&showAppName=true)](https://argocd-internal.spirit-dev.net/applications/csi-driver-smb-turingpi)
+
 
 <!--TOC-->
 
@@ -35,4 +33,4 @@ The installation should be done in two steps:
 
 ## Resources
 
-- [github](https://github.com/kubernetes-csi/csi-driver-smb)
+- [github](https://github.com/kubernetes-csi/csi-driver-smb
